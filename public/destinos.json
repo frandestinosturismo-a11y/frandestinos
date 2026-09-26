@@ -3,7 +3,7 @@
   "destinos": [
     {
       "id": "teste",
-      "nome": "Destino Marciano - TESTE 2",
+      "nome": "Destino Marciano - TESTE 3.0",
       "regiao": "Sistema Solar",
       "categorias": [
         "Galática"
@@ -520,5 +520,3 @@
     }
   ]
 }
-
-
