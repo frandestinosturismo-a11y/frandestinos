@@ -1,0 +1,25 @@
+{
+  "name": "fran-turismo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "editor": "vite --host 0.0.0.0 --open /editor/",
+    "conferir": "node scripts/validate-content.mjs",
+    "atualizar": "npm run conferir && tsc --noEmit && vite build",
+    "build": "npm run conferir && tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "lucide": "^0.468.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "typescript": "~5.9.2",
+    "vite": "^7.1.7"
+  }
+}

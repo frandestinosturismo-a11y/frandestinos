@@ -1,0 +1,5 @@
+[
+  { "id": "petropolis", "destinationId": "petropolis", "title": "Um dia na Cidade Imperial", "date": null, "departure": null, "price": null },
+  { "id": "teresopolis", "destinationId": "teresopolis", "title": "Um respiro na Serra dos Órgãos", "date": null, "departure": null, "price": null },
+  { "id": "penedo", "destinationId": "penedo", "title": "Os encantos da Pequena Finlândia", "date": null, "departure": null, "price": null }
+]

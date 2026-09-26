@@ -1,0 +1,563 @@
+{
+  "$schema": "https://fran-turismo.local/schema/destinos.json",
+  "destinos": [
+    {
+      "id": "teste",
+      "nome": "TESTE",
+      "regiao": "aaaaaa",
+      "categorias": [
+        "serra"
+      ],
+      "selo": "ddddddd",
+      "icone": "sun",
+      "resumo": "eewewew",
+      "descricao": "fdfdfdf d f df d fdfdfdfwrewerwvv ww",
+      "atracoes": [
+        "sssss",
+        "tttttt",
+        "uuuuuuuu",
+        "iiiiiiii"
+      ],
+      "imagem": "istockphoto-647269852-612x612.jpg",
+      "imagemAlt": "hghghghghghghg",
+      "estilo": "aas2323d",
+      "descoberta": "dd3ef efrf efefd",
+      "levar": [
+        "ererere",
+        "rerererere",
+        "343434343",
+        "565yy5y5"
+      ],
+      "roteiro": [
+        {
+          "horario": "12:20",
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: descreva o que o visitante pode conhecer. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "ssssss?",
+          "resposta": "wewe3b3rb"
+        }
+      ]
+    },
+    {
+      "id": "petropolis",
+      "nome": "Petrópolis",
+      "regiao": "Região Serrana",
+      "categorias": [
+        "serra",
+        "cultura"
+      ],
+      "selo": "HISTÓRIA & CHARME",
+      "icone": "landmark",
+      "resumo": "Palácios, jardins e aquele clima gostoso da serra.",
+      "descricao": "A Cidade Imperial convida a desacelerar entre construções históricas, jardins e cafés. Um destino para quem gosta de passear com calma e descobrir histórias pelo caminho.",
+      "atracoes": [
+        "A arquitetura do Palácio Quitandinha",
+        "O charme do centro histórico",
+        "Cafés e sabores da serra"
+      ],
+      "imagem": "petropolis",
+      "imagemAlt": "Palácio Quitandinha e seu lago em Petrópolis",
+      "estilo": "História, jardins e cafés",
+      "descoberta": "História, arquitetura e jardins de Petrópolis",
+      "galeria": [
+        {
+          "imagem": "petropolis-cristal",
+          "legenda": "Palácio de Cristal, em Petrópolis"
+        },
+        {
+          "imagem": "petropolis-cristal-jardim",
+          "legenda": "Jardim e vista lateral do Palácio de Cristal"
+        }
+      ],
+      "levar": [
+        "Agasalho leve e proteção para chuva"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: História, arquitetura e jardins de Petrópolis. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "As visitas aos palácios incluem ingresso?",
+          "resposta": "As fotos e atrações apresentadas são inspirações. Confirme quais espaços fazem parte da saída, se haverá visita interna e quais ingressos estão incluídos ou são cobrados à parte."
+        },
+        {
+          "pergunta": "Quanto vamos caminhar pelo centro?",
+          "resposta": "O percurso, os pisos, as escadas e as pausas precisam ser confirmados para a saída. Conte à Fran sobre eventuais necessidades de mobilidade antes de reservar."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Informe a idade das crianças à Fran para confirmar a adequação do roteiro, valores, assentos e pausas. Essas condições dependem da saída escolhida."
+        },
+        {
+          "pergunta": "E se chover no dia do passeio?",
+          "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
+        }
+      ]
+    },
+    {
+      "id": "teresopolis",
+      "nome": "Teresópolis",
+      "regiao": "Região Serrana",
+      "categorias": [
+        "serra"
+      ],
+      "selo": "NATUREZA & AR PURO",
+      "icone": "mountain",
+      "resumo": "Montanhas que impressionam. Paisagens que abraçam.",
+      "descricao": "Com a Serra dos Órgãos como cenário, Teresópolis é um convite para respirar fundo. Mirantes, artesanato e natureza compõem o encanto desse pedacinho do Rio.",
+      "atracoes": [
+        "A vista do Dedo de Deus",
+        "As paisagens da Serra dos Órgãos",
+        "O artesanato da Feirinha do Alto"
+      ],
+      "imagem": "teresopolis",
+      "imagemAlt": "Pico Dedo de Deus entre as montanhas da Serra dos Órgãos",
+      "estilo": "Natureza, mirantes e ar puro",
+      "descoberta": "Paisagens e mirantes de Teresópolis",
+      "galeria": [
+        {
+          "imagem": "teresopolis-comary",
+          "legenda": "Entrada da Granja Comary, em Teresópolis"
+        },
+        {
+          "imagem": "teresopolis-lago",
+          "legenda": "Campos e montanhas da Granja Comary"
+        }
+      ],
+      "levar": [
+        "Agasalho e proteção para chuva"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: Paisagens e mirantes de Teresópolis. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O passeio tem trilha?",
+          "resposta": "Não considere uma trilha incluída apenas pelas imagens das montanhas. Pergunte se a saída prevê caminhada, qual o percurso, a duração e a intensidade antes de confirmar sua participação."
+        },
+        {
+          "pergunta": "A Granja Comary faz parte do roteiro?",
+          "resposta": "A galeria apresenta paisagens do destino. Consulte a Fran para saber quais locais serão visitados e quais acessos estarão disponíveis na data escolhida."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Informe a idade das crianças à Fran para confirmar a adequação do roteiro, valores, assentos e pausas. Essas condições dependem da saída escolhida."
+        },
+        {
+          "pergunta": "E se chover no dia do passeio?",
+          "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
+        }
+      ]
+    },
+    {
+      "id": "penedo",
+      "nome": "Penedo",
+      "regiao": "Serra da Mantiqueira",
+      "categorias": [
+        "serra",
+        "cultura"
+      ],
+      "selo": "SABORES & ACONCHEGO",
+      "icone": "coffee",
+      "resumo": "Um pedacinho da Finlândia, pertinho de você.",
+      "descricao": "Ruas acolhedoras, casinhas de inspiração finlandesa e uma pausa para um chocolate. Em Penedo, os pequenos detalhes fazem parte da viagem.",
+      "atracoes": [
+        "O colorido da Pequena Finlândia",
+        "Chocolates e gastronomia local",
+        "Lojinhas e lembranças especiais"
+      ],
+      "imagem": "penedo",
+      "imagemAlt": "Ponte e casas coloridas da Pequena Finlândia em Penedo",
+      "estilo": "Gastronomia e passeios tranquilos",
+      "descoberta": "O charme das ruas e os sabores de Penedo",
+      "galeria": [
+        {
+          "imagem": "penedo-finlandia",
+          "legenda": "Arquitetura da Pequena Finlândia, em Penedo"
+        },
+        {
+          "imagem": "penedo-vila",
+          "legenda": "Lojas e construções da Pequena Finlândia, em Penedo"
+        }
+      ],
+      "levar": [
+        "Agasalho leve",
+        "Bolsa pequena para suas compras"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: O charme das ruas e os sabores de Penedo. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Haverá tempo para compras e chocolate?",
+          "resposta": "Pergunte à Fran se a saída prevê tempo livre, quais paradas estão planejadas e quanto tempo será reservado para cada uma. Compras pessoais não devem ser consideradas incluídas sem confirmação."
+        },
+        {
+          "pergunta": "Vamos visitar cachoeiras?",
+          "resposta": "A visita a cachoeiras não está confirmada nesta apresentação. Consulte o roteiro específico antes de levar roupa de banho ou planejar atividades na água."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Informe a idade das crianças à Fran para confirmar a adequação do roteiro, valores, assentos e pausas. Essas condições dependem da saída escolhida."
+        },
+        {
+          "pergunta": "E se chover no dia do passeio?",
+          "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
+        }
+      ]
+    },
+    {
+      "id": "arraial",
+      "nome": "Arraial do Cabo",
+      "regiao": "Região dos Lagos",
+      "categorias": [
+        "litoral"
+      ],
+      "selo": "SOL & MAR",
+      "icone": "waves",
+      "resumo": "Azul por todos os lados e um dia para guardar.",
+      "descricao": "Areias claras e águas de tons intensos fazem de Arraial um destino que chama a atenção logo no primeiro olhar. Uma inspiração para o seu próximo encontro com o mar.",
+      "atracoes": [
+        "O azul das praias de Arraial",
+        "Paisagens da Região dos Lagos",
+        "Um dia de brisa e pé na areia"
+      ],
+      "imagem": "arraial",
+      "imagemAlt": "Vista da costa e das águas azuis de Arraial do Cabo",
+      "estilo": "Praia, paisagens e descanso",
+      "descoberta": "Paisagens e praias de Arraial do Cabo",
+      "galeria": [
+        {
+          "imagem": "arraial-pontal",
+          "legenda": "Paisagem do Pontal do Atalaia, em Arraial do Cabo"
+        },
+        {
+          "imagem": "arraial-prainhas",
+          "legenda": "Prainhas do Pontal do Atalaia, em Arraial do Cabo"
+        }
+      ],
+      "levar": [
+        "Proteção para o sol",
+        "Toalha e roupa extra, se houver tempo de praia confirmado"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: Paisagens e praias de Arraial do Cabo. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O passeio de barco está incluído?",
+          "resposta": "Não há passeio de barco confirmado nesta apresentação. Pergunte à Fran se ele faz parte da saída, qual o custo e quais condições podem alterar a atividade."
+        },
+        {
+          "pergunta": "Há escadas ou acessos difíceis?",
+          "resposta": "Confirme quais praias serão visitadas e como será o acesso a cada uma. Informe necessidades de mobilidade para que a equipe avalie o roteiro com você."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Informe a idade das crianças à Fran para confirmar a adequação do roteiro, valores, assentos e pausas. Essas condições dependem da saída escolhida."
+        },
+        {
+          "pergunta": "E se chover no dia do passeio?",
+          "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
+        }
+      ]
+    },
+    {
+      "id": "paraty",
+      "nome": "Paraty",
+      "regiao": "Costa Verde",
+      "categorias": [
+        "litoral",
+        "cultura"
+      ],
+      "selo": "CULTURA & ENCANTO",
+      "icone": "camera",
+      "resumo": "Ruas de pedra, casinhas coloridas e muita história.",
+      "descricao": "Entre o mar e as montanhas, Paraty tem um ritmo próprio. O centro histórico, a gastronomia e a paisagem da Costa Verde convidam a explorar cada cantinho.",
+      "atracoes": [
+        "As ruas do centro histórico",
+        "Arquitetura e cultura local",
+        "As paisagens da Costa Verde"
+      ],
+      "imagem": "paraty",
+      "imagemAlt": "Igreja de Santa Rita junto ao mar em Paraty",
+      "estilo": "Arquitetura, cultura e mar",
+      "descoberta": "Ruas, arquitetura e histórias de Paraty",
+      "galeria": [
+        {
+          "imagem": "paraty-centro",
+          "legenda": "Reflexos do casario no centro histórico de Paraty"
+        },
+        {
+          "imagem": "paraty-ruas",
+          "legenda": "Ruas e arquitetura do centro histórico de Paraty"
+        }
+      ],
+      "levar": [
+        "Proteção para o sol e a chuva"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: Ruas, arquitetura e histórias de Paraty. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "O roteiro inclui barco ou só o centro histórico?",
+          "resposta": "As atividades variam conforme a saída. Consulte a Fran para saber se haverá passeio de barco, visita ao centro ou tempo livre, e os valores de cada atividade."
+        },
+        {
+          "pergunta": "Como é a caminhada pelo centro?",
+          "resposta": "Pergunte sobre duração, pisos, acessos e pausas do percurso escolhido. A equipe precisa conhecer suas necessidades de mobilidade para orientar sua participação."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Informe a idade das crianças à Fran para confirmar a adequação do roteiro, valores, assentos e pausas. Essas condições dependem da saída escolhida."
+        },
+        {
+          "pergunta": "E se chover no dia do passeio?",
+          "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
+        }
+      ]
+    },
+    {
+      "id": "rio",
+      "nome": "Rio de Janeiro",
+      "regiao": "Cidade Maravilhosa",
+      "categorias": [
+        "litoral",
+        "cultura"
+      ],
+      "selo": "CARTÕES-POSTAIS",
+      "icone": "sun",
+      "resumo": "O extraordinário também pode estar bem perto.",
+      "descricao": "Redescubra o Rio com olhar de viajante. Entre a montanha e o mar, a Cidade Maravilhosa tem paisagens e histórias que merecem uma nova visita.",
+      "atracoes": [
+        "Paisagens entre a montanha e o mar",
+        "Os cartões-postais cariocas",
+        "Cultura e histórias do Rio"
+      ],
+      "imagem": "rio",
+      "imagemAlt": "Vista aérea do Cristo Redentor, da Baía de Guanabara e do Pão de Açúcar",
+      "estilo": "Cartões-postais e descobertas urbanas",
+      "descoberta": "Paisagens e cartões-postais cariocas",
+      "galeria": [
+        {
+          "imagem": "rio-copacabana",
+          "legenda": "Calçadão e Avenida Atlântica, em Copacabana"
+        },
+        {
+          "imagem": "rio-orla",
+          "legenda": "Vista da orla de Copacabana"
+        }
+      ],
+      "levar": [
+        "Proteção para o sol",
+        "Bolsa pequena para os itens do dia"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: Paisagens e cartões-postais cariocas. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Cristo Redentor e Pão de Açúcar estão incluídos?",
+          "resposta": "Os cartões-postais das fotos não representam atrações contratadas. Confirme quais visitas estarão no roteiro, os ingressos e os deslocamentos incluídos na saída escolhida."
+        },
+        {
+          "pergunta": "Onde será o encontro no Rio?",
+          "resposta": "O bairro, o ponto de encontro e o horário dependem da saída. Você pode informar sua preferência de embarque ao consultar a Fran, mas o local precisa ser confirmado pela equipe."
+        },
+        {
+          "pergunta": "Posso levar crianças?",
+          "resposta": "Informe a idade das crianças à Fran para confirmar a adequação do roteiro, valores, assentos e pausas. Essas condições dependem da saída escolhida."
+        },
+        {
+          "pergunta": "E se chover no dia do passeio?",
+          "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
+        }
+      ]
+    },
+    {
+      "id": "marte",
+      "nome": "Marte",
+      "regiao": "Marciana",
+      "categorias": [
+        "litoral"
+      ],
+      "selo": "Sistema Solar",
+      "icone": "mountain",
+      "resumo": "Planeta vermelho",
+      "descricao": "Muito quente e muito longe.",
+      "atracoes": [
+        "Outro planeta"
+      ],
+      "imagem": "istockphoto-647269852-612x612",
+      "imagemAlt": "Planeta Vermelho visto da órbita",
+      "estilo": "Montanhas",
+      "descoberta": "Viagem para fora da Terra",
+      "levar": [
+        "Água",
+        "Protetor solar"
+      ],
+      "roteiro": [
+        {
+          "horario": null,
+          "titulo": "Encontro e embarque",
+          "descricao": "Ponto de encontro e horário a combinar com a Fran."
+        },
+        {
+          "horario": null,
+          "titulo": "Hora de descobrir o destino",
+          "descricao": "Inspiração: Viagem para fora da Terra. As atrações efetivas serão confirmadas no roteiro."
+        },
+        {
+          "horario": null,
+          "titulo": "Pausa para o almoço",
+          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
+        },
+        {
+          "horario": null,
+          "titulo": "Volta para casa",
+          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
+        }
+      ],
+      "perguntas": [
+        {
+          "pergunta": "Fica longe?",
+          "resposta": "Claro, é Marte!"
+        }
+      ]
+    }
+  ]
+}

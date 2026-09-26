@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Mariana S.",
+    "destination": "Um dia em Petrópolis",
+    "text": "Sabe aquele dia que dá vontade de viver de novo? Voltei encantada com a cidade, com a conversa no caminho e com cada cantinho que descobrimos. Já fiquei com vontade do próximo passeio!",
+    "illustrative": true,
+    "portrait": "/images/people/mariana.png",
+    "portraitGenerated": true
+  },
+  {
+    "name": "Ricardo e Ana",
+    "destination": "Boas memórias em Penedo",
+    "text": "Trocamos a correria por um dia de casinhas coloridas, chocolate e boas risadas. Foi a pausa que a gente estava precisando. Nosso álbum de fotos ganhou um capítulo muito especial!",
+    "illustrative": true,
+    "portrait": "/images/people/ricardo-ana.png",
+    "portraitGenerated": true
+  },
+  {
+    "name": "Luciana M.",
+    "destination": "Um respiro em Teresópolis",
+    "text": "Fui pela paisagem e voltei com muito mais: novas conversas, a cabeça leve e aquela sensação boa de ter feito algo por mim. A serra tem mesmo um jeito de abraçar a gente.",
+    "illustrative": true,
+    "portrait": "/images/people/luciana.png",
+    "portraitGenerated": true
+  },
+  {
+    "name": "Camila R.",
+    "destination": "Um dia de sol em Arraial do Cabo",
+    "text": "Eu estava precisando de um dia sem olhar o relógio. Fiquei um tempão admirando aquele azul e tirei mais fotos do que imaginava. Voltei com vontade de levar minha irmã na próxima!",
+    "illustrative": true,
+    "portrait": "/images/people/camila.png",
+    "portraitGenerated": true
+  },
+  {
+    "name": "Paulo C.",
+    "destination": "Descobertas em Paraty",
+    "text": "Gosto de conhecer os lugares sem pressa, reparando nas portas, nas ruas e nas histórias. Paraty me ganhou desse jeito. Foi daqueles passeios que rendem assunto quando a gente volta para casa.",
+    "illustrative": true
+  },
+  {
+    "name": "Renata A.",
+    "destination": "Uma pausa em Petrópolis",
+    "text": "Chamei uma amiga para sair um pouco da rotina e foi uma delícia. Entre uma caminhada e um café, colocamos a conversa em dia e encontramos cantinhos lindos. Um dia simples que virou uma ótima lembrança.",
+    "illustrative": true
+  },
+  {
+    "name": "Fernando L.",
+    "destination": "Um novo olhar para o Rio de Janeiro",
+    "text": "Às vezes a gente esquece de passear na própria cidade. Separei esse dia para olhar o Rio com mais calma e me surpreendi de novo. Voltei com fotos bonitas e uma lista de lugares para revisitar.",
+    "illustrative": true
+  }
+]

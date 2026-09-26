@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Editor de destinos · Fran Turismo</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="./editor.css" />
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <p class="eyebrow">Fran Turismo · Painel de conteúdo</p>
+    <h1>Editor de destinos</h1>
+    <p class="sub">Personalize, crie e exclua destinos do site. Ao terminar, clique em <strong>Salvar alterações</strong>.</p>
+  </div>
+  <div class="topbar-actions">
+    <button id="novo" class="btn btn-ghost" type="button">+ Novo destino</button>
+    <button id="salvar" class="btn btn-primary" type="button">Salvar alterações</button>
+    <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">Conferir site ↗</a>
+    <button id="ajuda" class="btn btn-ghost" type="button" aria-expanded="false">Como usar</button>
+  </div>
+</header>
+
+<section id="ajuda-painel" class="ajuda" hidden>
+  <ol>
+    <li>Escolha um destino na lista à esquerda ou clique em <strong>Novo destino</strong>.</li>
+    <li>Preencha os campos. Os que têm <span class="req">*</span> são obrigatórios.</li>
+    <li>Para usar uma foto nova, coloque o arquivo na pasta <code>public/images</code> e escreva o nome do arquivo (sem <code>.jpg</code>) no campo correspondente.</li>
+    <li>Um destino novo entra na <strong>primeira posição</strong> da lista. Use as setas ↑ e ↓ para mudar a ordem dos demais.</li>
+    <li>Preencha o <strong>roteiro do dia</strong> com as etapas da saída. Horário em branco aparece como “Horário a confirmar”.</li>
+    <li>Clique em <strong>Salvar alterações</strong>. O arquivo <code>public/destinos.json</code> é gravado direto, com uma cópia da versão anterior em <code>public/destinos-copia-…json</code>.</li>
+    <li>Rode <code>npm run atualizar</code> no terminal do projeto e envie a pasta <code>dist</code> para a hospedagem.</li>
+  </ol>
+  <p>Para gravar direto, o editor precisa ter sido aberto pelo servidor local do projeto (<code>npm run editor</code>). Sem ele, o navegador baixa o arquivo <code>destinos.json</code> e você substitui o de <code>public/</code> pelo download.</p>
+  <p>Desfazer uma alteração: copie uma das cópias <code>destinos-copia-…json</code> de <code>public/</code> sobre <code>destinos.json</code>.</p>
+</section>
+
+<div id="aviso" class="aviso" role="status" hidden></div>
+
+<section class="fluxo" aria-label="Etapas para publicar">
+  <div><span class="passo">1</span><p><strong>Edite os destinos</strong><small>Textos, fotos e roteiro em um só lugar.</small></p></div>
+  <div><span class="passo">2</span><p><strong>Salve no computador</strong><small id="estado-salvo" role="status">Carregando conteúdo…</small></p></div>
+  <div><span class="passo">3</span><p><strong>Prepare e publique</strong><small>Rode <code>npm run atualizar</code> e envie o conteúdo de <code>dist</code>.</small></p></div>
+</section>
+<main class="layout">
+  <aside class="lista" aria-label="Destinos cadastrados">
+    <h2>Destinos <span id="contagem" class="badge">0</span></h2>
+    <label class="busca">Buscar destino<input id="buscar" type="search" placeholder="Nome ou região…" /></label>
+    <p class="muted lista-dica">Use ↑ e ↓ para ordenar a vitrine do site.</p>
+    <p id="sem-resultados" class="muted" hidden>Nenhum destino encontrado nesta busca.</p>
+    <ul id="lista-destinos"></ul>
+    <p id="lista-vazia" class="muted" hidden>Nenhum destino ainda. Clique em “Novo destino”.</p>
+  </aside>
+
+  <form id="form" class="ficha" novalidate>
+    <div id="ficha-vazia" class="vazio">
+      <h2>Escolha um destino</h2>
+      <p>Selecione um item da lista para editar, ou crie um destino novo.</p>
+      <button id="novo-2" class="btn btn-primary" type="button">+ Novo destino</button>
+    </div>
+
+    <div id="ficha-campos" hidden>
+      <div class="ficha-head">
+        <div><p class="eyebrow">Ficha do destino</p><h2><span id="titulo-ficha">Novo destino</span></h2><p class="muted">Campos com * são obrigatórios. Salvar não publica o site.</p></div>
+        <div class="ficha-head-actions">
+          <button id="excluir" class="btn btn-danger" type="button">Excluir destino</button>
+        </div>
+      </div>
+
+      <nav id="secoes" class="secoes" aria-label="Seções do destino"></nav>
+      <fieldset>
+        <legend>Identificação</legend>
+        <label><span>Nome do destino <span class="req">*</span></span>
+          <input name="nome" type="text" required placeholder="Ex.: Búzios" />
+        </label>
+        <label><span>Identificador no link <span class="req">*</span></span>
+          <input name="id" type="text" required placeholder="buzios" pattern="[a-z0-9-]+" />
+          <small>Só letras minúsculas, números e hífen. Não pode repetir. Ex.: <code>buzios</code></small>
+        </label>
+        <label><span>Região <span class="req">*</span></span>
+          <input name="regiao" type="text" required placeholder="Ex.: Região dos Lagos" />
+        </label>
+        <label><span>Etiqueta do cartão</span>
+          <input name="selo" type="text" placeholder="Ex.: SOL & MAR" />
+        </label>
+        <fieldset class="inline">
+          <legend>Categorias (marque as que valem) <span class="req">*</span></legend>
+          <div id="opcoes-categorias" class="opcoes-categorias"></div>
+          <div class="nova-categoria"><label>Categoria personalizada<input id="categoria-nova" type="text" maxlength="60" placeholder="Ex.: Turismo religioso" /></label><button id="adicionar-categoria" type="button" class="btn btn-ghost">+ Adicionar categoria</button></div>
+          <small>Marque quantas quiser. As categorias utilizadas aparecem nos filtros do site.</small>
+        </fieldset>
+        <label><span>Ícone</span>
+          <select name="icone" id="icone"></select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Textos que aparecem no site</legend>
+        <label><span>Resumo do cartão <span class="req">*</span></span>
+          <input name="resumo" type="text" required placeholder="Uma frase curta, ex.: Águas claras e noites animadas." />
+        </label>
+        <label><span>Descrição completa <span class="req">*</span></span>
+          <textarea name="descricao" rows="3" required placeholder="Dois ou três períodos sobre o destino."></textarea>
+        </label>
+        <label><span>Estilo (usado no comparador)</span>
+          <input name="estilo" type="text" placeholder="Ex.: Praia, gastronomia e vida noturna" />
+        </label>
+        <label><span>Frase de descoberta</span>
+          <input name="descoberta" type="text" placeholder="Ex.: Praias e paisagens de Búzios" />
+        </label>
+        <div class="lista-simples">
+          <span class="rotulo">Inspirações para conhecer (aparecem na ficha do destino)</span>
+          <div id="atracoes"></div>
+          <button class="btn btn-ghost btn-small" type="button" data-add="atracoes">+ Adicionar inspiração</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fotos</legend>
+        <label><span>Foto principal (nome do arquivo em <code>public/images</code>) <span class="req">*</span></span>
+          <span class="com-preview">
+            <input name="imagem" type="text" required placeholder="buzios" />
+            <img id="preview-principal" alt="Prévia da foto principal" />
+          </span>
+        </label>
+        <label><span>Descrição da foto principal (para leitores de tela)</span>
+          <input name="imagemAlt" type="text" placeholder="Ex.: Orla de Búzios vista do mirante" />
+        </label>
+        <div class="lista-simples">
+          <span class="rotulo">Galeria (até 2 fotos extras são exibidas junto da principal)</span>
+          <div id="galeria"></div>
+          <button class="btn btn-ghost btn-small" type="button" data-add="galeria">+ Adicionar foto</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Dicas para a mala</legend>
+        <div class="lista-simples">
+          <span class="rotulo">Itens recomendados (documento, água e calçado já entram automaticamente)</span>
+          <div id="levar"></div>
+          <button class="btn btn-ghost btn-small" type="button" data-add="levar">+ Adicionar item</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Roteiro do dia</legend>
+        <div class="lista-simples">
+          <span class="rotulo">Etapas na ordem em que acontecem. Deixe o horário em branco quando ainda não estiver confirmado — a ficha do destino mostra “Horário a confirmar”.</span>
+          <div id="roteiro"></div>
+          <button class="btn btn-ghost btn-small" type="button" data-add="roteiro">+ Adicionar etapa</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Perguntas frequentes</legend>
+        <div class="lista-simples">
+          <span class="rotulo">Dúvidas deste destino</span>
+          <div id="perguntas"></div>
+          <button class="btn btn-ghost btn-small" type="button" data-add="perguntas">+ Adicionar pergunta</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Guarde a data</legend>
+        <p class="muted">Personalize os textos deste destino. Para confirmar uma data, edite as saídas na agenda abaixo.</p>
+        <label>Título da seção<input name="calendarioTitulo" type="text" /></label>
+        <label>Texto com data confirmada<textarea name="calendarioConfirmado" rows="2"></textarea></label>
+        <label>Texto enquanto a data não foi confirmada<textarea name="calendarioPendente" rows="2"></textarea></label>
+        <a href="#agenda-editor">Editar datas, embarque e preço na agenda ↓</a>
+      </fieldset>
+
+      <div id="erros" class="erros" role="alert" hidden></div>
+      <div class="rodape-ficha">
+        <button class="btn btn-primary" type="button" id="salvar-2">Salvar alterações</button>
+        <button class="btn btn-ghost" type="button" id="descartar">Desfazer alterações não salvas</button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<section id="agenda-editor" class="agenda-editor ficha" aria-labelledby="agenda-editor-titulo">
+  <div class="ficha-head"><div><p class="eyebrow">Próximos passeios</p><h2 id="agenda-editor-titulo">Agenda · Guarde a data</h2><p class="muted">Os valores atuais são carregados automaticamente. Campos em branco ficam a confirmar. Salve os destinos antes de vincular uma nova saída.</p></div></div>
+  <form id="agenda-form"><div id="agenda-itens"></div><div class="rodape-ficha"><button id="nova-saida" type="button" class="btn btn-ghost" disabled>+ Nova saída</button><button id="salvar-agenda" type="submit" class="btn btn-primary" disabled>Salvar agenda</button></div><p id="agenda-status" role="status">Carregando agenda…</p></form>
+</section>
+
+<dialog id="dialog-excluir" class="dialogo">
+  <h2>Excluir destino</h2>
+  <p>O destino <strong id="nome-excluir"></strong> será removido do site quando você salvar o arquivo.</p>
+  <div class="dialogo-actions">
+    <button id="confirmar-excluir" class="btn btn-danger" type="button">Sim, excluir</button>
+    <button id="cancelar-excluir" class="btn btn-ghost" type="button">Cancelar</button>
+  </div>
+</dialog>
+
+<script src="./editor.js" type="module"></script>
+<script src="./agenda.js" type="module"></script>
+</body>
+</html>
