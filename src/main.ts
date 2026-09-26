@@ -155,6 +155,17 @@ async function loadAgenda() {
     if (!Array.isArray(data)) throw new Error('Agenda inválida');
     const today = new Date(); today.setHours(0,0,0,0);
     tours = data.filter((t): t is Tour => !!t && typeof t.id === 'string' && typeof t.title === 'string' && destinations.some(d => d.id === t.destinationId) && (t.date === null || validDate(t.date)) && (t.departure === null || typeof t.departure === 'string') && (t.price === null || typeof t.price === 'number' && Number.isFinite(t.price) && t.price >= 0)).filter(t => !t.date || new Date(`${t.date}T12:00:00`) >= today).sort((a,b) => (a.date ?? '9999').localeCompare(b.date ?? '9999'));
+    // Todo destino publicado participa da agenda, mesmo sem uma saída cadastrada
+    // ou quando suas saídas anteriores já passaram. Datas vêm da agenda salva.
+    const scheduledDestinations = new Set(tours.map(t => t.destinationId));
+    const usedIds = new Set(data.map(t => t?.id));
+    for (const destination of destinations) {
+      if (scheduledDestinations.has(destination.id)) continue;
+      let id = `pending-${destination.id}`;
+      while (usedIds.has(id)) id = `pending-${id}`;
+      usedIds.add(id);
+      tours.push({ id, destinationId: destination.id, title: destination.nome, date: null, departure: null, price: null });
+    }
     [...new Set(tours.filter(t => t.date).map(t => t.date!.slice(0,7)))].sort().forEach(month => { agendaMonth.add(new Option(formatDate(month + '-01', {month:'long',year:'numeric'}), month)); });
     agendaLoaded = true; renderAgenda(); refreshTravelDetails();
   } catch {
