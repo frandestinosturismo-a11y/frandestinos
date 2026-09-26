@@ -65,7 +65,7 @@ test('selecting a dated departure shows only its itinerary and exports calendar'
  const google=new URL((await page.getByRole('link',{name:'Abrir no Google Agenda'}).getAttribute('href'))!);
  expect(google.searchParams.get('dates')).toBe('20991115T100000Z/20991115T220000Z');
  const downloadPromise=page.waitForEvent('download');await page.locator('#download-calendar').click();const download=await downloadPromise;
- expect(download.suggestedFilename()).toBe('fran-turismo-penedo-2099-11-15.ics');
+ expect(download.suggestedFilename()).toBe('fran-destinos-penedo-2099-11-15.ics');
  const stream=await download.createReadStream();let content='';for await(const chunk of stream!)content+=chunk.toString();
  expect(content).toContain('DTSTART:20991115T100000Z');expect(content).toContain('DTEND:20991115T220000Z');
  expect(content.replace(/\r\n /g,'')).toContain('97217-7007');
@@ -85,7 +85,7 @@ test('iCalendar escapes text, folds UTF-8 and handles day/month boundaries',()=>
  const ics=createCalendarFile(tour,new Date('2026-09-25T12:00:00Z'));const unfolded=ics.replace(/\r\n /g,'');
  expect(ics).toContain('DTSTART;VALUE=DATE:20991231');expect(ics).toContain('DTEND;VALUE=DATE:21000101');
  expect(unfolded).toContain('LOCATION:Praça\\, centro\\; portão 2\\nEncontro');
- expect(unfolded).toContain('SUMMARY:Fran Turismo — Excursão\\, café\\; coração');
+ expect(unfolded).toContain('SUMMARY:Fran Destinos — Excursão\\, café\\; coração');
  for(const line of ics.split('\r\n'))expect(Buffer.byteLength(line,'utf8')).toBeLessThanOrEqual(75);
  expect(new URL(googleCalendarUrl(tour)).searchParams.get('dates')).toBe('20991231/21000101');
  expect(()=>createCalendarFile({...tour,date:null})).toThrow();expect(()=>createCalendarFile({...tour,date:'2099-02-30'})).toThrow();

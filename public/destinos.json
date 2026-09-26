@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fran-turismo.local/schema/destinos.json",
+  "$schema": "https://fran-destinos.local/schema/destinos.json",
   "destinos": [
     {
       "id": "teste",

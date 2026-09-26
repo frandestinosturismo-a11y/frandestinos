@@ -13,7 +13,7 @@ export function cardActions(id:string) {
 }
 export function consultation(id:string, tourContext = '') {
  const d = destinations.find(d=>d.id===id)!;
- return `<details class="consultation" data-tour-context="${esc(tourContext)}"><summary>Deixe a consulta do seu jeito <span>Opcional ${i('chevron-down')}</span></summary><div class="consult-fields"><label>Quantas pessoas?<input id="consult-people" type="number" min="1" max="99" step="1" inputmode="numeric" placeholder="Ex.: 2" /></label><label>Preferência de embarque<input id="consult-departure" type="text" maxlength="100" placeholder="Seu bairro ou cidade" autocomplete="off" /></label></div><p>O ponto de embarque será combinado com a Fran. Você pode continuar sem preencher.</p><span id="consult-error" role="status"></span></details><a id="consult-link" class="button button-orange" href="${whatsapp(`Olá, Fran Turismo! Quero consultar ${tourContext || `um passeio para ${d.nome}`}. ${quizContext}Quais são as datas, os valores, o roteiro e os pontos de embarque?`)}" target="_blank" rel="noopener noreferrer">${i('message-circle')} Consultar passeio para ${d.nome}</a><button class="modal-share text-button" data-share="${id}">${i('share-2')} Vamos juntos? Compartilhar destino</button>`;
+ return `<details class="consultation" data-tour-context="${esc(tourContext)}"><summary>Deixe a consulta do seu jeito <span>Opcional ${i('chevron-down')}</span></summary><div class="consult-fields"><label>Quantas pessoas?<input id="consult-people" type="number" min="1" max="99" step="1" inputmode="numeric" placeholder="Ex.: 2" /></label><label>Preferência de embarque<input id="consult-departure" type="text" maxlength="100" placeholder="Seu bairro ou cidade" autocomplete="off" /></label></div><p>O ponto de embarque será combinado com a Fran. Você pode continuar sem preencher.</p><span id="consult-error" role="status"></span></details><a id="consult-link" class="button button-orange" href="${whatsapp(`Olá, Fran Destinos! Quero consultar ${tourContext || `um passeio para ${d.nome}`}. ${quizContext}Quais são as datas, os valores, o roteiro e os pontos de embarque?`)}" target="_blank" rel="noopener noreferrer">${i('message-circle')} Consultar passeio para ${d.nome}</a><button class="modal-share text-button" data-share="${id}">${i('share-2')} Vamos juntos? Compartilhar destino</button>`;
 }
 export function setupExperience(options:{icons:()=>void;openDestination:(id:string, context?:string, tourId?:string)=>void;renderDestinations:()=>void;getCompany:()=>string}) {
  const {icons,openDestination,getCompany}=options;
@@ -61,7 +61,7 @@ export function setupExperience(options:{icons:()=>void;openDestination:(id:stri
  }
  async function shareDestination(id:string) {
   const d=destinations.find(d=>d.id===id)!;const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('destino',id);
-  if(navigator.share){try{await navigator.share({title:`${d.nome} com a Fran Turismo`,text:`Vamos juntos conhecer ${d.nome}?`,url:url.href});return;}catch(error){if(error instanceof Error&&error.name==='AbortError')return;}}
+  if(navigator.share){try{await navigator.share({title:`${d.nome} com a Fran Destinos`,text:`Vamos juntos conhecer ${d.nome}?`,url:url.href});return;}catch(error){if(error instanceof Error&&error.name==='AbortError')return;}}
   if(await copyLink(url.href)){notify('Link copiado! Envie para sua companhia de viagem.');return;}
   const input=document.querySelector<HTMLInputElement>('#share-url')!;input.value=url.href;document.querySelector('#share-feedback')!.textContent='';shareModal.showModal();document.body.classList.add('modal-open');input.focus();input.select();
  }
@@ -79,7 +79,7 @@ export function setupExperience(options:{icons:()=>void;openDestination:(id:stri
   const people=document.querySelector<HTMLInputElement>('#consult-people')!;const departure=document.querySelector<HTMLInputElement>('#consult-departure')!;
   const tourContext=document.querySelector<HTMLElement>('.consultation')?.dataset.tourContext;
   const context=quizContext || (getCompany()==='Ainda estou decidindo'?'':getCompany()+'. ');
-  link.href=whatsapp(`Olá, Fran Turismo! Quero consultar ${tourContext || `um passeio para ${d.nome}`}. ${context}${people.value&&people.validity.valid?`Vamos em ${people.value} pessoa(s). `:''}${departure.value.trim()?`Preferência de embarque: ${departure.value.trim()}. `:''}Quais são as próximas datas, valores, roteiro e pontos de embarque?`);
+  link.href=whatsapp(`Olá, Fran Destinos! Quero consultar ${tourContext || `um passeio para ${d.nome}`}. ${context}${people.value&&people.validity.valid?`Vamos em ${people.value} pessoa(s). `:''}${departure.value.trim()?`Preferência de embarque: ${departure.value.trim()}. `:''}Quais são as próximas datas, valores, roteiro e pontos de embarque?`);
   document.querySelector('#consult-error')!.textContent=people.validity.valid?'':'Informe de 1 a 99 pessoas, ou deixe o campo em branco.';
  };
  document.querySelector('#modal-content')!.addEventListener('input',updateConsultation);

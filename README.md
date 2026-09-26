@@ -1,4 +1,4 @@
-# Fran Turismo
+# Fran Destinos
 
 Landing page responsiva em português, criada com Vite, TypeScript e CSS. A identidade usa o logo fornecido, azul-marinho, laranja e rosa. Fontes e fotografias são servidas localmente.
 
@@ -79,7 +79,7 @@ O número está em `src/data.ts`: **+55 21 97217-7007**. Os links abrem o WhatsA
 
 ## Fotografias e créditos
 
-Fotos reais de Rio de Janeiro, Petrópolis, Teresópolis, Penedo, Arraial do Cabo e Paraty. Autores, fontes e licenças estão em `public/image-credits.json` e no botão “Créditos das imagens” no rodapé. O logo fornecido foi preservado em `public/images/fran-turismo-logo.png`.
+Fotos reais de Rio de Janeiro, Petrópolis, Teresópolis, Penedo, Arraial do Cabo e Paraty. Autores, fontes e licenças estão em `public/image-credits.json` e no botão “Créditos das imagens” no rodapé. O logo fornecido foi preservado em `public/images/fran-destinos-logo.png`.
 
 ## Publicação
 
