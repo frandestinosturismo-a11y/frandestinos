@@ -154,7 +154,14 @@ async function loadAgenda() {
     const data: unknown = await response.json();
     if (!Array.isArray(data)) throw new Error('Agenda inválida');
     const today = new Date(); today.setHours(0,0,0,0);
-    tours = data.filter((t): t is Tour => !!t && typeof t.id === 'string' && typeof t.title === 'string' && destinations.some(d => d.id === t.destinationId) && (t.date === null || validDate(t.date)) && (t.departure === null || typeof t.departure === 'string') && (t.price === null || typeof t.price === 'number' && Number.isFinite(t.price) && t.price >= 0)).filter(t => !t.date || new Date(`${t.date}T12:00:00`) >= today).sort((a,b) => (a.date ?? '9999').localeCompare(b.date ?? '9999'));
+    const destinationOrder = new Map(destinations.map((destination, index) => [destination.id, index]));
+    const compareTours = (a: Tour, b: Tour) => {
+      if (a.date && b.date) return a.date.localeCompare(b.date);
+      if (a.date) return -1;
+      if (b.date) return 1;
+      return (destinationOrder.get(a.destinationId) ?? destinations.length) - (destinationOrder.get(b.destinationId) ?? destinations.length);
+    };
+    tours = data.filter((t): t is Tour => !!t && typeof t.id === 'string' && typeof t.title === 'string' && destinations.some(d => d.id === t.destinationId) && (t.date === null || validDate(t.date)) && (t.departure === null || typeof t.departure === 'string') && (t.price === null || typeof t.price === 'number' && Number.isFinite(t.price) && t.price >= 0)).filter(t => !t.date || new Date(`${t.date}T12:00:00`) >= today);
     // Todo destino publicado participa da agenda, mesmo sem uma saída cadastrada
     // ou quando suas saídas anteriores já passaram. Datas vêm da agenda salva.
     const scheduledDestinations = new Set(tours.map(t => t.destinationId));
@@ -166,6 +173,7 @@ async function loadAgenda() {
       usedIds.add(id);
       tours.push({ id, destinationId: destination.id, title: destination.nome, date: null, departure: null, price: null });
     }
+    tours.sort(compareTours);
     [...new Set(tours.filter(t => t.date).map(t => t.date!.slice(0,7)))].sort().forEach(month => { agendaMonth.add(new Option(formatDate(month + '-01', {month:'long',year:'numeric'}), month)); });
     agendaLoaded = true; renderAgenda(); refreshTravelDetails();
   } catch {
