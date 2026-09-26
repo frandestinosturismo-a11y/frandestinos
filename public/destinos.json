@@ -3,12 +3,12 @@
   "destinos": [
     {
       "id": "teste",
-      "nome": "TESTE",
-      "regiao": "aaaaaa",
+      "nome": "Destino Marciano - TESTE",
+      "regiao": "Sistema Solar",
       "categorias": [
-        "serra"
+        "Galática"
       ],
-      "selo": "ddddddd",
+      "selo": "Sistema Solar",
       "icone": "sun",
       "resumo": "eewewew",
       "descricao": "fdfdfdf d f df d fdfdfdfwrewerwvv ww",
@@ -55,7 +55,12 @@
           "pergunta": "ssssss?",
           "resposta": "wewe3b3rb"
         }
-      ]
+      ],
+      "calendario": {
+        "titulo": "Guarde a data",
+        "confirmado": "Leve este passeio para a agenda do seu celular.",
+        "pendente": "Assim que a data for publicada, você poderá salvar o passeio no calendário."
+      }
     },
     {
       "id": "petropolis",
@@ -506,58 +511,12 @@
           "pergunta": "E se chover no dia do passeio?",
           "resposta": "Confirme com a Fran as condições de realização, possíveis alterações e a política de cancelamento antes de reservar. Não há uma regra única publicada para todas as saídas."
         }
-      ]
-    },
-    {
-      "id": "marte",
-      "nome": "Marte",
-      "regiao": "Marciana",
-      "categorias": [
-        "litoral"
       ],
-      "selo": "Sistema Solar",
-      "icone": "mountain",
-      "resumo": "Planeta vermelho",
-      "descricao": "Muito quente e muito longe.",
-      "atracoes": [
-        "Outro planeta"
-      ],
-      "imagem": "istockphoto-647269852-612x612",
-      "imagemAlt": "Planeta Vermelho visto da órbita",
-      "estilo": "Montanhas",
-      "descoberta": "Viagem para fora da Terra",
-      "levar": [
-        "Água",
-        "Protetor solar"
-      ],
-      "roteiro": [
-        {
-          "horario": null,
-          "titulo": "Encontro e embarque",
-          "descricao": "Ponto de encontro e horário a combinar com a Fran."
-        },
-        {
-          "horario": null,
-          "titulo": "Hora de descobrir o destino",
-          "descricao": "Inspiração: Viagem para fora da Terra. As atrações efetivas serão confirmadas no roteiro."
-        },
-        {
-          "horario": null,
-          "titulo": "Pausa para o almoço",
-          "descricao": "Confirme a parada, as opções de alimentação e se a refeição está incluída no valor."
-        },
-        {
-          "horario": null,
-          "titulo": "Volta para casa",
-          "descricao": "Previsão de retorno e desembarque a confirmar com a equipe."
-        }
-      ],
-      "perguntas": [
-        {
-          "pergunta": "Fica longe?",
-          "resposta": "Claro, é Marte!"
-        }
-      ]
+      "calendario": {
+        "titulo": "Guarde a data",
+        "confirmado": "Leve este passeio para a agenda do seu celular.",
+        "pendente": "Assim que a data for publicada, você poderá salvar o passeio no calendário."
+      }
     }
   ]
 }
