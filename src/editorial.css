@@ -44,6 +44,24 @@ h1,h2{font-weight:600;text-wrap:balance}h2{font-size:clamp(36px,3.65vw,53px);let
   .memory-postcard .review-author > svg { display: none; }
 }
 
+.agenda-more { text-align: center; padding: 22px 0 12px; }
+.agenda-more[hidden] { display: none; }
+.agenda-more p { font-size: 11px; color: #697581; margin-bottom: 12px; }
+.agenda-more-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 10px 22px; border: 1px dashed #d49462; border-radius: 28px; background: #fff8ee; color: #092449; font-size: 12px; font-weight: 600; transition: background .2s, box-shadow .2s; }
+.agenda-more-button:hover { background: #ffeed8; box-shadow: 0 4px 14px #09244912; }
+.agenda-more-button:focus-visible { outline: 3px solid #c75713; outline-offset: 4px; }
+.agenda-more-button > svg { width: 16px; height: 16px; }
+.agenda-more-icon { display: grid; place-items: center; width: 30px; height: 28px; border-bottom: 1px dashed #d49462; color: #b95115; }
+.agenda-more-icon svg { width: 20px; height: 20px; }
+.agenda-more-button:hover .agenda-more-icon svg,
+.agenda-more-button:focus-visible .agenda-more-icon svg { animation: agenda-bus-trip .8s ease-in-out; }
+@keyframes agenda-bus-trip { 0%, 100% { transform: translateX(0); } 35% { transform: translateX(5px) translateY(-1px); } 65% { transform: translateX(-2px); } }
+@media (prefers-reduced-motion: reduce) {
+  .agenda-more-button { transition: none; }
+  .agenda-more-button:hover .agenda-more-icon svg,
+  .agenda-more-button:focus-visible .agenda-more-icon svg { animation: none; }
+}
+
 /* Continuous, manually scrollable testimonial ribbon. */
 .review-carousel { container-type: inline-size; overflow-x: auto; scrollbar-width: none; padding: 18px 0 12px; overscroll-behavior-x: contain; }
 .review-carousel::-webkit-scrollbar { display: none; }

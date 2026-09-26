@@ -128,18 +128,36 @@ document.addEventListener('click', e => { if (!e.composedPath().includes(documen
 
 let tours: Tour[] = [];
 let agendaLoaded = false;
+let agendaVisible = 3;
+document.querySelector('#tour-list')!.insertAdjacentHTML('afterend', `<div class="agenda-more" hidden><p id="agenda-progress" role="status"></p><button type="button" class="agenda-more-button" aria-controls="tour-list"><span class="agenda-more-icon" aria-hidden="true">${icon('bus')}</span><span>Ver mais passeios</span>${icon('chevron-down')}</button></div>`);
+const agendaMore = document.querySelector<HTMLElement>('.agenda-more')!;
+const agendaMoreButton = agendaMore.querySelector<HTMLButtonElement>('button')!;
+agendaMoreButton.addEventListener('click', () => {
+  const previous = agendaVisible;
+  agendaVisible += 3;
+  renderAgenda();
+  const firstNew = document.querySelectorAll<HTMLElement>('#tour-list .tour-row')[previous];
+  if (firstNew) {
+    firstNew.tabIndex = -1;
+    firstNew.focus({ preventScroll: true });
+    firstNew.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }
+});
 let company = 'Ainda estou decidindo';
 const agendaDestination = document.querySelector<HTMLSelectElement>('#agenda-destination')!;
 const agendaMonth = document.querySelector<HTMLSelectElement>('#agenda-month')!;
 const formatDate = (value: string, options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat('pt-BR', options).format(new Date(`${value}T12:00:00`));
 const validDate = (value: unknown): value is string => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(`${value}T12:00:00`).getTime()) && new Date(`${value}T12:00:00`).toLocaleDateString('en-CA') === value;
-function renderAgenda() {
+function renderAgenda(event?: Event) {
+  if (event) agendaVisible = 3;
   if (!agendaLoaded) return;
   const filtered = tours.filter(t => (agendaDestination.value === 'all' || t.destinationId === agendaDestination.value) && (agendaMonth.value === 'all' || (agendaMonth.value === 'pending' ? !t.date : t.date?.startsWith(agendaMonth.value))));
   const hasDates = tours.some(t => t.date);
   document.querySelector('#agenda-status')!.textContent = hasDates ? `${filtered.length} passeio${filtered.length === 1 ? '' : 's'} encontrado${filtered.length === 1 ? '' : 's'}. Consulte disponibilidade com a Fran.` : 'Novas saídas em preparação. Consulte a Fran para confirmar as próximas datas.';
   document.querySelector<HTMLButtonElement>('#clear-agenda')!.hidden = agendaDestination.value === 'all' && agendaMonth.value === 'all';
-  document.querySelector('#tour-list')!.innerHTML = filtered.length ? filtered.map(t => {
+  agendaMore.hidden = filtered.length <= agendaVisible;
+  document.querySelector('#agenda-progress')!.textContent = `Mostrando ${Math.min(agendaVisible, filtered.length)} de ${filtered.length} passeios`;
+  document.querySelector('#tour-list')!.innerHTML = filtered.length ? filtered.slice(0, agendaVisible).map(t => {
     const d = destinations.find(d => d.id === t.destinationId)!;
     const date = t.date ? `<strong>${formatDate(t.date, { day: '2-digit' })}</strong><span>${formatDate(t.date, { month: 'short' }).replace('.','').toUpperCase()}</span><small>${formatDate(t.date, { year: 'numeric' })}</small>` : `${icon('calendar-days')}<span>EM BREVE</span>`;
     const message = `Olá, Fran Destinos! ${t.date ? 'Tenho interesse' : 'Quero saber da próxima saída e combinar com a equipe como receber novidades'} no passeio “${t.title}”, para ${d.nome}${t.date ? ` em ${formatDate(t.date, {dateStyle:'long'})}` : ''}. ${company !== 'Ainda estou decidindo' ? company + '. ' : ''}Pode me informar ${t.date ? 'a disponibilidade' : 'a próxima data'}, os valores e o local de embarque?`;
@@ -183,8 +201,8 @@ async function loadAgenda() {
 }
 agendaDestination.addEventListener('change', renderAgenda);
 agendaMonth.addEventListener('change', renderAgenda);
-document.querySelector('#clear-agenda')!.addEventListener('click', () => { agendaDestination.value = 'all'; agendaMonth.value = 'all'; renderAgenda(); });
-document.querySelector('#trip-finder')!.addEventListener('submit', e => { e.preventDefault(); agendaDestination.value = document.querySelector<HTMLSelectElement>('#finder-destination')!.value; company = document.querySelector<HTMLSelectElement>('#finder-company')!.value; agendaMonth.value = 'all'; renderAgenda(); document.querySelector('#agenda')!.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'}); agendaDestination.focus({preventScroll:true}); });
+document.querySelector('#clear-agenda')!.addEventListener('click', () => { agendaDestination.value = 'all'; agendaMonth.value = 'all'; agendaVisible = 3; renderAgenda(); });
+document.querySelector('#trip-finder')!.addEventListener('submit', e => { e.preventDefault(); agendaDestination.value = document.querySelector<HTMLSelectElement>('#finder-destination')!.value; company = document.querySelector<HTMLSelectElement>('#finder-company')!.value; agendaMonth.value = 'all'; agendaVisible = 3; renderAgenda(); document.querySelector('#agenda')!.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'}); agendaDestination.focus({preventScroll:true}); });
 
 function postcardPhoto(label: string) {
   const destination = destinations.find(d => label.toLocaleLowerCase('pt-BR').includes(d.nome.toLocaleLowerCase('pt-BR')));

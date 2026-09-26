@@ -11,6 +11,8 @@ test.beforeEach(async ({ page }) => {
 test('destino novo aparece como EM BREVE mesmo sem saídas cadastradas', async ({ page }) => {
   await page.route('**/passeios.json', route => route.fulfill({ json: [] }));
   await page.goto('/');
+  await expect(page.locator('#tour-list .tour-row')).toHaveCount(3);
+  while (await page.locator('.agenda-more-button').isVisible()) await page.locator('.agenda-more-button').click();
   await expect(page.locator('#tour-list .tour-row')).toHaveCount(catalog.destinos.length + 1);
   await page.locator('#agenda-destination').selectOption(destination.id);
   await expect(page.locator('#tour-list .tour-row')).toHaveCount(1);
@@ -59,6 +61,10 @@ test('ordena datas cronologicamente e pendentes pela ordem definida no editor', 
   ] }));
 
   await page.goto('/');
+  await expect(page.locator('#tour-list .tour-row')).toHaveCount(3);
+  await page.locator('.agenda-more-button').click();
+  await expect(page.locator('#tour-list .tour-row')).toHaveCount(6);
+  while (await page.locator('.agenda-more-button').isVisible()) await page.locator('.agenda-more-button').click();
   const titles = await page.locator('#tour-list .tour-info h3').allTextContents();
   expect(titles.slice(0, 2)).toEqual(['Data anterior', 'Data posterior']);
   expect(titles.slice(2)).toEqual(reversedCatalog.filter(destination => ![catalog.destinos[1].id, catalog.destinos[2].id].includes(destination.id)).map(destination => {
@@ -66,4 +72,6 @@ test('ordena datas cronologicamente e pendentes pela ordem definida no editor', 
     if (destination.id === catalog.destinos[0].id) return 'Pendente A';
     return destination.nome;
   }));
+  await page.locator('#agenda-month').selectOption('pending');
+  await expect(page.locator('#tour-list .tour-row')).toHaveCount(3);
 });
