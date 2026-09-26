@@ -214,10 +214,11 @@ Na ficha de cada destino, a seção **Guarde a data** permite mudar o título, o
 
 Abaixo das fichas, em **Agenda · Guarde a data**, as saídas existentes já vêm preenchidas. Você pode editar destino, título, data, local de embarque e preço, adicionar saídas ou remover as que não serão oferecidas. Clique em **Salvar agenda** para gravar em `public/passeios.json`. A agenda tem uma gravação própria, separada da ficha do destino.
 
+- Todo destino salvo aparece automaticamente na agenda pública. Sem uma próxima saída cadastrada, aparece como **EM BREVE**. Para informar a data, adicione uma saída vinculada ao destino em **Agenda · Guarde a data** e clique em **Salvar agenda**.
 - Data vazia mantém a indicação de data a confirmar; uma data confirmada habilita o calendário do visitante.
 - Preço vazio significa valor não informado; **0** é um valor válido e aparece como R$ 0,00.
 - Salve um destino novo antes de clicar em **Nova saída**, para que ele esteja disponível na seleção.
-- Saídas com datas passadas não aparecem na agenda pública, mas continuam disponíveis no editor.
+- Saídas com datas passadas não aparecem na agenda pública, mas continuam disponíveis no editor. Se o destino ficar sem próximas saídas, ele aparece como **EM BREVE**.
 - Ao mudar a data de uma saída com horários detalhados, esses horários são removidos para evitar um evento de calendário com data antiga. O lembrete passa a ser de dia inteiro.
 - Cada gravação da agenda guarda uma cópia `public/passeios-copia-…json` (até 10). Essas cópias não entram na pasta `dist`.
 
